@@ -183,7 +183,8 @@
                 if (! buttonExists) {
                     buttonExists = (UIButton *)[[_row.columns objectAtIndex:i] button];
                     frame = [buttonExists frame];
-                    [buttonExists setFrame:CGRectMake(left, 0, frame.size.width, frame.size.height)];
+					float newY = (MAX(frame.size.height, self.frame.size.height) - MIN(frame.size.height, self.frame.size.height)) / 2;
+                    [buttonExists setFrame:CGRectMake(left, newY, frame.size.width, frame.size.height)];
                     [buttonExists setTag:tagExpand];
                     [buttonExists addTarget:self action:@selector(jcGridMenuViewColumnSelected:) forControlEvents:UIControlEventTouchUpInside];
                     [self addSubview:buttonExists];
@@ -204,7 +205,8 @@
                 if (! viewExists) {
                     viewExists = (UIView *)[[_row.columns objectAtIndex:i] view];
                     frame = [viewExists frame];
-                    [viewExists setFrame:CGRectMake(left, 0, frame.size.width, frame.size.height)];
+					float newY = (MAX(frame.size.height, self.frame.size.height) - MIN(frame.size.height, self.frame.size.height)) / 2;
+                    [viewExists setFrame:CGRectMake(left, newY, frame.size.width, frame.size.height)];
                     [viewExists setTag:tagExpand];
                     [self addSubview:viewExists];
                     left += frame.size.width;
